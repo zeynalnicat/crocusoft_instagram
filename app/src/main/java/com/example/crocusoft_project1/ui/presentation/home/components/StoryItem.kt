@@ -1,16 +1,17 @@
 package com.example.crocusoft_project1.ui.presentation.home.components
 
-import android.view.RoundedCorner
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
@@ -23,7 +24,6 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.zIndex
@@ -72,16 +72,22 @@ fun StoryItem(
 
                         ),
                     shape = CircleShape
+
                 )
                 .padding(DsTheme.dimens.dp03)
                 .clip(CircleShape)
+                .clickable(
+                    onClick = onStoryClick
+                )
         ) {
 
             AsyncImage(
                 modifier = Modifier
                     .padding(DsTheme.dimens.dp03)
                     .size(DsTheme.dimens.storyImg)
-                    .clip(CircleShape),
+                    .clip(CircleShape)
+                    .zIndex(0f),
+
 
                 model = ImageRequest.Builder(context)
                     .data(story.imgUri)
@@ -97,11 +103,13 @@ fun StoryItem(
                     modifier = Modifier
                         .align(Alignment.BottomCenter)
                         .offset(y = DsTheme.dimens.dp1)
+                        .zIndex(10f)
                         .clip(RoundedCornerShape(DsTheme.dimens.dp03))
                         .background(color = White)
-                        .padding(DsTheme.dimens.dp1)
+                        .padding(DsTheme.dimens.dp02)
                 ) {
                     Box(
+                        contentAlignment = Alignment.Center,
                         modifier = Modifier
                             .background(
                                 brush = Brush.linearGradient(
@@ -114,6 +122,8 @@ fun StoryItem(
                                 )
                             )
                             .clip(RoundedCornerShape(DsTheme.dimens.dp03))
+                            .height(16.dp)
+                            .width(26.dp)
 
                     ) {
                         Text(
@@ -145,7 +155,7 @@ fun StoryItem(
 @Composable
 fun StoryItemPreview() {
     val story = StoryEntity(
-        imgUri = "",
+        imgUri = "https://fastly.picsum.photos/id/2/200/300.jpg",
         name = "Alice",
         isLive = false
 

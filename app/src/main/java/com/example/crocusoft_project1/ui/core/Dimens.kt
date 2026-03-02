@@ -5,6 +5,11 @@ import androidx.compose.ui.unit.sp
 
 object Dimens {
 
+    val postMinWidth = 300.dp
+    val postMaxHeight= 300.dp
+    val postMaxWidth = 600.dp
+
+
     val storySize = 62.dp
     val storyImg = 54.dp
 
@@ -24,6 +29,8 @@ object Dimens {
     val dp3 = 12.dp
     val dp4 = 16.dp
     val dp5 = 20.dp
+
+    val dp8 = 32.dp
 
     val dp03 = 3.dp
     val dp02 = 2.dp

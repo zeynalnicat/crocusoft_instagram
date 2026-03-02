@@ -14,7 +14,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
 import com.example.crocusoft_project1.R
 import com.example.crocusoft_project1.ui.core.DsTheme
+import com.example.crocusoft_project1.ui.domain.entities.PostDetailsEntity
 import com.example.crocusoft_project1.ui.presentation.home.components.DAppbar
+import com.example.crocusoft_project1.ui.presentation.home.components.PostDetail
 import com.example.crocusoft_project1.ui.presentation.home.components.StoryList
 
 
@@ -47,7 +49,14 @@ fun HomeContent(
 
             HorizontalDivider(
                 thickness = DsTheme.dimens.dpHalf,
-                color = colorResource(R.color.shadow)
+                color = colorResource(R.color.shadow).copy(alpha = 0.6f)
+            )
+
+            Spacer(modifier = Modifier.height(height = DsTheme.dimens.dp2))
+
+            PostDetail(
+                post = PostDetailsEntity.mockData(),
+                postIntent = postIntent
             )
         }
     }

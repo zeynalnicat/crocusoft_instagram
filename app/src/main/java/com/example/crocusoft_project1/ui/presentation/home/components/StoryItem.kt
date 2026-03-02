@@ -31,7 +31,7 @@ import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.example.crocusoft_project1.R
 import com.example.crocusoft_project1.ui.core.DsTheme
-import com.example.crocusoft_project1.ui.domain.StoryEntity
+import com.example.crocusoft_project1.ui.domain.entities.StoryEntity
 import com.example.crocusoft_project1.ui.theme.White
 
 
@@ -81,20 +81,10 @@ fun StoryItem(
                 )
         ) {
 
-            AsyncImage(
-                modifier = Modifier
-                    .padding(DsTheme.dimens.dp03)
-                    .size(DsTheme.dimens.storyImg)
-                    .clip(CircleShape)
-                    .zIndex(0f),
-
-
-                model = ImageRequest.Builder(context)
-                    .data(story.imgUri)
-                    .crossfade(true)
-                    .build(),
-                contentDescription = null,
-                contentScale = ContentScale.Crop
+            ProfileAvatar(
+                imgUri = story.imgUri,
+                size = DsTheme.dimens.storyImg,
+                padding = DsTheme.dimens.dp03
             )
 
 

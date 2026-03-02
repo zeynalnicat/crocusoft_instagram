@@ -1,5 +1,6 @@
 package com.example.crocusoft_project1.ui.core
 
+import androidx.compose.ui.graphics.Color.Companion.Gray
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -18,6 +19,18 @@ object DTextStyle {
         fontSize = DsTheme.dimens.sp1,
         fontWeight = FontWeight.W400,
     )
+
+    val t14Bold = TextStyle(
+        fontSize = DsTheme.dimens.sp2,
+        fontWeight = FontWeight.W600
+    )
+
+    val t12Gray = TextStyle(
+        fontSize = DsTheme.dimens.sp1,
+        fontWeight = FontWeight.W400,
+        color = Gray
+    )
+
 
     val t12Bold =
         TextStyle(

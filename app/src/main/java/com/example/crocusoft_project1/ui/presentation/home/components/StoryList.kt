@@ -8,7 +8,7 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import com.example.crocusoft_project1.ui.core.DsTheme
-import com.example.crocusoft_project1.ui.domain.StoryEntity
+import com.example.crocusoft_project1.ui.domain.entities.StoryEntity
 
 
 @Composable

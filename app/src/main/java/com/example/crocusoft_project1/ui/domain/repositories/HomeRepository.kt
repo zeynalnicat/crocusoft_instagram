@@ -1,6 +1,6 @@
 package com.example.crocusoft_project1.ui.domain.repositories
 
-import com.example.crocusoft_project1.ui.domain.StoryEntity
+import com.example.crocusoft_project1.ui.domain.entities.StoryEntity
 
 interface HomeRepository {
 

@@ -9,7 +9,7 @@ class HomeRepositoryImpl: HomeRepository {
             StoryEntity(
                 imgUri = "https://picsum.photos/id/${id}/200/300",
                 name = "Jane $id",
-                isLive = id % 2 == 0
+                isLive = id % 4 == 0
             )
         }
     }

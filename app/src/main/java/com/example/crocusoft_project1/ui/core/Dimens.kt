@@ -9,6 +9,7 @@ object Dimens {
     val storyImg = 54.dp
 
 
+    val sp0 = 8.sp
     val sp1 = 12.sp
     val sp2 = 14.sp
     val sp3 = 16.sp

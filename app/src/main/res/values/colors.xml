@@ -12,6 +12,9 @@
 
     <color name="yellow">#FBAA47</color>
     <color name="red">#D91A46</color>
+    <color name="red02">#E20337</color>
+    <color name="pink">#C60188</color>
+    <color name="purple02">#7700C3</color>
     <color name="purple">#A60F93</color>
     <color name="gray">#A6A6AA</color>
 </resources>

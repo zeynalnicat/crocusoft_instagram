@@ -1,7 +1,10 @@
 package com.example.crocusoft_project1.ui.core
 
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import com.example.crocusoft_project1.R
+import com.example.crocusoft_project1.ui.theme.White
 
 
 object DTextStyle {
@@ -21,4 +24,12 @@ object DTextStyle {
             fontSize = DsTheme.dimens.sp1,
             fontWeight = FontWeight.W600,
         )
+
+    val t8White = TextStyle(
+        fontSize = DsTheme.dimens.sp0,
+        fontWeight = FontWeight.W500,
+        color = White
+
+    )
+
 }

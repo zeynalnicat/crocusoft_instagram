@@ -9,26 +9,30 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.widthIn
+import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.example.crocusoft_project1.R
 import com.example.crocusoft_project1.ui.core.DTextStyle
 import com.example.crocusoft_project1.ui.core.DsTheme
-import com.example.crocusoft_project1.ui.domain.entities.PostDetailsEntity
+import com.example.crocusoft_project1.ui.domain.entities.PostEntity
 import com.example.crocusoft_project1.ui.presentation.home.HomeContract
 
 @Composable
 fun PostDetail(
-    post: PostDetailsEntity,
+    post: PostEntity,
     postIntent: (HomeContract.Intent) -> Unit
 ) {
 
@@ -122,24 +126,21 @@ fun PostDetail(
             DIconButton(R.drawable.save) { postIntent(HomeContract.Intent.OnSave(post)) }
         }
 
-        Row(
+        Text(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = DsTheme.dimens.dp2),
-            horizontalArrangement = Arrangement.spacedBy(DsTheme.dimens.dp1),
-
-            ) {
-            Text(
-                text = post.username,
-                style = DsTheme.textStyle.t12Bold
-            )
-
-            Text(
-                text = post.description,
-                style = DsTheme.textStyle.t12
-            )
-
-        }
+            text = buildAnnotatedString {
+                withStyle(
+                    style = SpanStyle(fontWeight = FontWeight.Bold)
+                ) {
+                    append(post.username)
+                }
+                append(" ")
+                append(post.description)
+            },
+            style = DsTheme.textStyle.t12
+        )
 
         Spacer(modifier = Modifier.height(height = DsTheme.dimens.dp3))
 

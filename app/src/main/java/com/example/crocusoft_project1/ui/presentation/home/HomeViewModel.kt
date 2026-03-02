@@ -4,12 +4,14 @@ package com.example.crocusoft_project1.ui.presentation.home
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.crocusoft_project1.ui.domain.usecases.home.FetchStoriesUseCase
+import com.example.crocusoft_project1.ui.domain.usecases.post.FetchPostsUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
 class HomeViewModel(
-    private val fetchStoriesUseCase: FetchStoriesUseCase
+    private val fetchStoriesUseCase: FetchStoriesUseCase,
+    private val fetchPostsUseCase: FetchPostsUseCase,
 ) : ViewModel() {
 
     private val _state = MutableStateFlow(HomeContract.State())
@@ -18,7 +20,7 @@ class HomeViewModel(
 
     fun onIntent(intent: HomeContract.Intent) {
         when (intent) {
-            is HomeContract.Intent.OnFetchStories -> {
+            HomeContract.Intent.OnFetchStories -> {
                 onFetchStories()
             }
 
@@ -27,8 +29,17 @@ class HomeViewModel(
             is HomeContract.Intent.OnLikePost -> {}
             is HomeContract.Intent.OnSave -> {}
             is HomeContract.Intent.OnShare -> {}
+            HomeContract.Intent.OnFetchPosts -> {
+                onFetchPosts()
+            }
         }
 
+    }
+
+    private fun onFetchPosts() {
+        viewModelScope.launch {
+            _state.emit(_state.value.copy(posts = fetchPostsUseCase()))
+        }
     }
 
     private fun onFetchStories() {

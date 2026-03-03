@@ -27,6 +27,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.zIndex
 import com.example.crocusoft_project1.R
+import com.example.crocusoft_project1.core.Colors
 import com.example.crocusoft_project1.core.DsTheme
 import com.example.crocusoft_project1.core.Strings
 import com.example.crocusoft_project1.domain.entities.StoryEntity
@@ -56,15 +57,15 @@ fun StoryItem(
                         DsTheme.dimens.dp02,
                         brush = Brush.linearGradient(
                             colors = if (!story.isLive) listOf(
-                                colorResource(id = R.color.yellow),
-                                colorResource(id = R.color.red),
-                                colorResource(id = R.color.purple),
+                                colorResource(id = Colors.yellow),
+                                colorResource(id = Colors.red),
+                                colorResource(id = Colors.purple),
 
                                 )
                             else listOf(
-                                colorResource(id = R.color.red02),
-                                colorResource(id = R.color.pink),
-                                colorResource(id = R.color.purple02),
+                                colorResource(id = Colors.red02),
+                                colorResource(id = Colors.pink),
+                                colorResource(id = Colors.purple02),
                             )
                         ),
 

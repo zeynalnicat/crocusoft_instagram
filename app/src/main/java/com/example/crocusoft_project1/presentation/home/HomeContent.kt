@@ -39,7 +39,9 @@ fun HomeContent(
 
     Scaffold(
         modifier = Modifier.padding(innerPadding),
-        topBar = { DAppbar() }
+        topBar = { DAppbar(
+            postIntent = postIntent
+        ) }
     ) { innerPadding ->
         Column(
             modifier = Modifier

@@ -138,7 +138,7 @@ fun PostDetail(
                         ) {
 
                         Text(
-                            text = "${pagerState.currentPage + 1}/${post.contents.size}",
+                            text = "${pagerState.currentPage + 1}/${pagerState.pageCount}",
                             style = DTextStyle.t12White,
                         )
                     }
@@ -149,31 +149,40 @@ fun PostDetail(
         }
 
 
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = DsTheme.dimens.dp2)
 
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceBetween,
-            verticalAlignment = Alignment.CenterVertically,
         ) {
             Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically,
             ) {
-                DIconButton(Drawables.like) {
-                    postIntent(HomeContract.Intent.OnLikePost(post))
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    DIconButton(Drawables.like) {
+                        postIntent(HomeContract.Intent.OnLikePost(post))
 
-                }
-                DIconButton(Drawables.comment) {
-                    postIntent(HomeContract.Intent.OnComment)
+                    }
+                    DIconButton(Drawables.comment) {
+                        postIntent(HomeContract.Intent.OnComment)
 
-                }
-                DIconButton(Drawables.messanger) {
-                    postIntent(HomeContract.Intent.OnShare(post))
+                    }
+                    DIconButton(Drawables.messanger) {
+                        postIntent(HomeContract.Intent.OnShare(post))
 
+                    }
                 }
+
+                DIconButton(Drawables.save) { postIntent(HomeContract.Intent.OnSave(post)) }
             }
 
             if (post.contents.size > 1) {
                 Row(
+                    modifier = Modifier.align(Alignment.Center),
                     horizontalArrangement = Arrangement.spacedBy(DsTheme.dimens.dp1)
                 ) {
                     repeat(post.contents.size) { iteration ->
@@ -193,7 +202,6 @@ fun PostDetail(
             }
 
 
-            DIconButton(Drawables.save) { postIntent(HomeContract.Intent.OnSave(post)) }
         }
 
 

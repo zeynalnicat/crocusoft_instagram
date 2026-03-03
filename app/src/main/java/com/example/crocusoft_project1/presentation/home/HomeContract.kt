@@ -21,7 +21,14 @@ sealed interface HomeContract {
 
         data class OnSave(val postEntity: PostEntity) : Intent
 
-        data object OnLoadMore: Intent
+        data object OnLoadMore : Intent
+
+        data object OnPrefixAction : Intent
+
+        data object OnSuffixLeftAction : Intent
+
+        data object OnSuffixRightAction : Intent
+
 
     }
 
@@ -32,5 +39,5 @@ sealed interface HomeContract {
         val page: Int = 0,
         val size: Int = 5,
 
-    )
+        )
 }

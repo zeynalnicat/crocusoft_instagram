@@ -40,6 +40,10 @@ class HomeViewModel(
                 }
 
             }
+
+            HomeContract.Intent.OnPrefixAction -> {}
+            HomeContract.Intent.OnSuffixLeftAction -> {}
+            HomeContract.Intent.OnSuffixRightAction -> {}
         }
 
     }

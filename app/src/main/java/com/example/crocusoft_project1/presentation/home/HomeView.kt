@@ -2,6 +2,7 @@ package com.example.crocusoft_project1.presentation.home
 
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.crocusoft_project1.data.HomeRepositoryImpl
@@ -19,7 +20,7 @@ fun HomeView(innerPadding: PaddingValues) {
     val fetchStoriesUseCase = FetchStoriesUseCase(homeRepo)
     val fetchPostsUseCase = FetchPostsUseCase(postRepo)
     val viewModel: HomeViewModel = viewModel { HomeViewModel(fetchStoriesUseCase, fetchPostsUseCase) }
-    val state = viewModel.state.collectAsStateWithLifecycle().value
+    val state by viewModel.state.collectAsStateWithLifecycle()
 
     HomeContent(
         innerPadding = innerPadding,

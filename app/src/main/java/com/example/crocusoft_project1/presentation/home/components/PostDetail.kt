@@ -12,10 +12,12 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.PageSize
 import androidx.compose.foundation.pager.rememberPagerState
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -35,6 +37,7 @@ import coil.request.ImageRequest
 import com.example.crocusoft_project1.R
 import com.example.crocusoft_project1.core.DTextStyle
 import com.example.crocusoft_project1.core.DsTheme
+import com.example.crocusoft_project1.core.theme.Blue
 import com.example.crocusoft_project1.domain.entities.PostEntity
 import com.example.crocusoft_project1.presentation.home.HomeContract
 
@@ -118,7 +121,7 @@ fun PostDetail(
             }
 
 
-            if(post.contents.size>1){
+            if (post.contents.size > 1) {
                 Box(
                     modifier = Modifier
                         .align(Alignment.TopEnd)
@@ -146,7 +149,6 @@ fun PostDetail(
 
 
 
-
         Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceBetween,
@@ -169,8 +171,31 @@ fun PostDetail(
                 }
             }
 
+            if (post.contents.size > 1) {
+                Row(
+                    horizontalArrangement = Arrangement.spacedBy(DsTheme.dimens.dp1)
+                ) {
+                    repeat(post.contents.size) { iteration ->
+                        Box(
+                            modifier = Modifier
+                                .clip(CircleShape)
+                                .size(DsTheme.dimens.dp06)
+                                .background(
+                                    color = if (pagerState.currentPage == iteration) Blue else colorResource(
+                                        R.color.gray
+                                    )
+                                )
+
+                        )
+                    }
+                }
+            }
+
+
             DIconButton(R.drawable.save) { postIntent(HomeContract.Intent.OnSave(post)) }
         }
+
+
 
         Text(
             modifier = Modifier

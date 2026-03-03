@@ -16,6 +16,7 @@ class PostRepositoryImpl : PostRepository {
             .take(end)
             .map {
                 PostEntity(
+                    id = it.toString(),
                     username = it.toString(),
                     contents = if (it % 2 == 0) listOf(
                         "https://picsum.photos/200/300",

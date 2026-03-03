@@ -1,5 +1,6 @@
 package com.example.crocusoft_project1.presentation.home.components
 
+import androidx.compose.animation.animateColorAsState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -21,6 +22,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -35,23 +37,30 @@ import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.example.crocusoft_project1.R
+import com.example.crocusoft_project1.core.Colors
 import com.example.crocusoft_project1.core.DTextStyle
 import com.example.crocusoft_project1.core.Drawables
 import com.example.crocusoft_project1.core.DsTheme
+import com.example.crocusoft_project1.core.theme.Black
 import com.example.crocusoft_project1.core.theme.Blue
+import com.example.crocusoft_project1.core.theme.Red
+import com.example.crocusoft_project1.core.theme.White
 import com.example.crocusoft_project1.domain.entities.PostEntity
 import com.example.crocusoft_project1.presentation.home.HomeContract
 
 @Composable
 fun PostDetail(
     post: PostEntity,
+    isLiked: Boolean,
     postIntent: (HomeContract.Intent) -> Unit
 ) {
 
     val context = LocalContext.current
-
-
     val pagerState = rememberPagerState { post.contents.size }
+    val animatedColor by animateColorAsState(
+        targetValue = if (!isLiked) Black else Red
+    )
+
 
     Column(
         modifier = Modifier.fillMaxWidth()
@@ -163,7 +172,7 @@ fun PostDetail(
                 Row(
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
-                    DIconButton(Drawables.like) {
+                    DIconButton(icon = Drawables.like, iconColor = animatedColor) {
                         postIntent(HomeContract.Intent.OnLikePost(post))
 
                     }
@@ -192,7 +201,7 @@ fun PostDetail(
                                 .size(DsTheme.dimens.dp06)
                                 .background(
                                     color = if (pagerState.currentPage == iteration) Blue else colorResource(
-                                        R.color.gray
+                                        Colors.gray
                                     )
                                 )
 

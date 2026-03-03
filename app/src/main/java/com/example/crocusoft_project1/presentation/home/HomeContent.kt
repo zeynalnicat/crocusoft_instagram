@@ -65,7 +65,8 @@ fun HomeContent(
 
             PostList(
                 posts = state.posts,
-                postIntent = postIntent
+                postIntent = postIntent,
+                state = state
             )
         }
     }

@@ -1,6 +1,7 @@
 package com.example.crocusoft_project1.domain.entities
 
 data class PostEntity(
+    val id: String,
     val username: String,
     val userUri: String,
     val contents: List<String>,
@@ -10,6 +11,7 @@ data class PostEntity(
 ) {
     companion object {
         fun mockData(): PostEntity = PostEntity(
+            id = "1",
             username = "zeynalnicat",
             contents = listOf("https://picsum.photos/200/300"),
             location = "Baku, Azerbaijan",

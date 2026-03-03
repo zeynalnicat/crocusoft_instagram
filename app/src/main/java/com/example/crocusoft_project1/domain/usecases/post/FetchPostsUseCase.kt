@@ -2,8 +2,10 @@ package com.example.crocusoft_project1.domain.usecases.post
 
 import com.example.crocusoft_project1.domain.entities.PostEntity
 import com.example.crocusoft_project1.domain.repositories.PostRepository
+import javax.inject.Inject
 
-class FetchPostsUseCase(
+
+class FetchPostsUseCase @Inject constructor(
     private val postRepository: PostRepository
 
 ) {

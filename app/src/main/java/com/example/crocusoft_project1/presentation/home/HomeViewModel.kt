@@ -6,11 +6,15 @@ import androidx.lifecycle.viewModelScope
 import com.example.crocusoft_project1.domain.entities.PostEntity
 import com.example.crocusoft_project1.domain.usecases.home.FetchStoriesUseCase
 import com.example.crocusoft_project1.domain.usecases.post.FetchPostsUseCase
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class HomeViewModel(
+
+@HiltViewModel
+class HomeViewModel @Inject constructor (
     private val fetchStoriesUseCase: FetchStoriesUseCase,
     private val fetchPostsUseCase: FetchPostsUseCase,
 ) : ViewModel() {
